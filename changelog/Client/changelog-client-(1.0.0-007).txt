@@ -1,0 +1,120 @@
+#NAME : AmilTools
+#AUTHOR : GABIN RIMBAULT && GAETAN QUICHAUD
+#DATE : 10/02/2019
+#BUILD : CLIENT : 1.0.0:007 - DEV
+
+#################################### LAST VERSION ####################################
+
+BUILD : TASK COMPONENT
+
+-----------------------------------------------------------------------------------------------
+
+# Général :
+    -> Ce Build apporte l'ajout de la derniére application de l'erp avant la sortie en 1.0.0
+    Il est basé sur le thème de trello. 
+    L'équipe a aussi ajouté la gestion des taches en temps réel grace à socket.io côté serveur.
+
+-----------------------------------------------------------------------------------------------
+
+#Client 
+
+    #Containers :
+        #Task :
+            #Affichage :
+                -> getLane() :: Render des lanes de trello à partir du state
+                -> getCards() :: Render des cards de trello, appartenant à une lane, à partir du state
+                -> getTagList() :: Render des tags d'une card avec en premier la priorité
+                -> convertDate() :: Convertie une date pour afficher un décompte (dans|il y a X jours|heures|minutes)
+
+            #Handle :
+                -> handleCardAdd() ::
+                -> hidePopup() ::
+                -> onTaskModif() ::
+                -> onTaskDelete() ::
+                -> onCardDelete() ::
+                -> handleDragEnd() ::
+                -> handleLaneDragEnd() ::
+                -> handleCardClick( ::
+
+        #TagList : 
+            -> changeText() ::
+            -> getClearTagList() ::
+                -> renvoie la liste de tag épuré
+                -> le 1er groupe enlève les , et espaces de début de chaine(^[\s,]+)
+                -> le 2eme groupe enlève les , et espaces de fin de chaine([\s,]+$)
+                -> le 3eme groupe enlève les espaces avant les virgules
+                -> la 4eme regexp enlève les ',' et espaces après une virgule (,)[\s,]+ 
+                -> remplace ça par la virgule gardée en mémoire si c'est le 4eme groupe qui a été matché
+            -> getTagColorTest() ::
+            -> afficheTag() ::
+            -> handleAdd() ::
+            -> onDateChange() ::
+            -> handleKeyDown() ::
+            -> onValide() ::
+            -> valideText() ::
+            -> 
+
+        #PopupTrelloTask : 
+            ->  editPriority() ::
+            -> handleEditTask() ::
+    
+    #Components : 
+        #TrelloTag : 
+            -> _onMouseMove() :: recupère la position de la souris tant qu'on n'est pas en mode édit, pour positionné le curseur au clic
+            -> componentDidUpdate() :: Lors du clic au passage au mode edit, uniquement la 1ere fois, positionne le curseur à la position du clic ~
+            -> onKeyPress() ::
+            -> supprimer() ::
+        
+        #TrelloCard : 
+            -> CustomCard() :: 
+
+        #NewCard : 
+            -> updateField() ::
+            -> handleAdd() ::
+            -> showDetail() ::
+            -> renderDetail() :
+
+        #TrelloLane : 
+            -> onKeyPress() ::
+    
+    #Actions :
+        -> GET_TAG_COLOR :: 
+        -> GET_TASK_LIST :: 
+        -> GET_ONE_TASK :: 
+        -> DELETE_ONE_TASK :: 
+        -> GET_TASK_GROUP_LIST :: 
+        -> SEND_SOCKET_MESSAGE :: 
+        -> addTagColor ::
+
+    #Reducers:
+        #reducer_tag ::
+        #reducer_task.js :: 
+        #reducer_task_group.js ::
+    
+    #Styles :
+        #Task : 
+            -> Modification compléte du CSS pour coller au style trello
+
+        #Popup :
+            -> popupTask :: Légère modification pour coller au popup
+
+    
+
+-----------------------------------------------------------------------------------------------
+
+# Bug :
+    CSS - Au niveau du profil utilisateur l'image et le nom et prénom sont trop haut.
+    CSS - Au niveau des CardBoard les flèches de l'onglet view détails ne sont pas bien alignées.
+    CSS - Au niveau des CardBoard la séparation entre les deux onglets de la carte est marqué par l'ombre.
+    CSS - Au niveau du MenuLeft les flèches des onglets qui contient plus d'options se décalent quand on passe la souris dessus.
+    CSS/JS - Sur les filtres du bugtracker les boutons ne repasse pas en outline une fois que l'on reclic dessus
+    JS - On obtient un bug si on fait deux recherches à la suite, on est redirigé sur NotFound, le bug est dû au location.pathname
+
+# TODO :
+    JS - Ajouter la possibilité d'archiver un bug
+    JS - Ajouter la possibilité de voir les bugs archiver
+    JS - Ajouter une pagination au Bugtracker Component
+    JS - Ajouter la possibilité de faire une recherche sur les task
+    JS - Ajouter un popup de validation de suppression de bug
+    
+#################################### LAST VERSION ####################################

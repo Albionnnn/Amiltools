@@ -44,3 +44,20 @@ export function receiveBugActions(Params){
         payload: Params
     }
 }
+
+export const GET_TAG_COLOR = 'GET_TAG_COLOR'
+
+export function addTagColor(tag) {
+  return function (dispatch) {
+    dispatch({
+      type: GET_TAG_COLOR,
+      payload: tag
+    })
+  }
+}
+
+export const GET_TASK_LIST = 'GET_TASK_LIST'
+export const GET_ONE_TASK = 'GET_ONE_TASK'
+export const DELETE_ONE_TASK = 'DELETE_ONE_TASK'
+export const GET_TASK_GROUP_LIST = 'GET_TASK_GROUP_LIST'
+export const SEND_SOCKET_MESSAGE = 'SEND_SOCKET_MESSAGE'

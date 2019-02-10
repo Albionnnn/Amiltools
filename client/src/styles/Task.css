@@ -1,91 +1,177 @@
-.iconTask{
-    text-align: center;
+.btndetail{ 
+  margin : 35%;
+  width: 40px;
+  font-weight: 700;
+  font-size: 6mm
 }
 
+.btn-bottom-pop{
+  margin : 10px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.div-margin-top{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.div-small-margin-bottom{
+  margin-bottom: 5px;
+}
+
+.header-trello{
+  padding-bottom: 6px;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between
+}
+
+.header-lane-trello{
+  border-bottom: 1px solid #c5c5c5;
+  font-size: 250;
+  font-weight: 700
+}
+
+.titre-lane-trello{
+  font-size: 25px;
+  font-weight: 700
+}
+
+.header-card-trello{
+  border-bottom: 1px solid #eee;
+}
+
+.tag-card-trello{              
+  border-top: 1px solid #eee;
+  padding-top: 6px;
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: row;
+  flex-wrap: wrap;
+  font-size: 16px
+}
+
+.input-trello{
+  background: white;
+  border-radius: 3px;
+  width: 206px; 
+  margin-right: 10px;
+  height: 28px;
+  padding: 2px 3px;
+}
+
+input.tag-popup-trello{
+  padding-bottom:6px;
+  padding-top:2px;
+}
+button.tag-popup-trello{
+  color: black;
+  padding-left: 3px;
+}
+
+.tag-popup-trello{
+  border-radius: 3px;
+  box-sizing: border-box;
+  color: rgb(255, 255, 255);
+  font-size: 18px;
+  font-weight: 400;
+  margin: 5px 10px 5px 0px;
+  padding: 3px 3px 3px 10px;       
+  text-align: left;
+  white-space: normal;
+  height: 28px;
+  line-height: 1em;
+}
+
+.tag-small{
+  margin: 2px 3px;
+  padding-left: 3px;
+  font-size: 77%;
+  height: auto;
+}
+
+.card-trello{
+  font-size: 14px;
+  padding: 6px
+}
+
+.description-card-trello{
+  padding: 0px 5px 6px 0px;
+  margin-bottom: 10px;
+}
+
+.card-trello-dueon{
+  color: red;
+  font-style: italic;
+}
+
+.header-card-tittle-trello{
+  font-weight: bold;
+}
+
+.trello-board {
+  background-color: #FFF 
+}
+
+/* enlève la border immonde de chrome */
+:focus {
+    outline: 0;
+}
 
 .contentTask{
-    background-color: white;
-    padding: 25px;
-    color: black;
-    min-height: 200px;
-    border-left: 1px solid #e7e7e7;
-    border-right: 1px solid #e7e7e7;
-    border-bottom: 1px solid #e7e7e7;
-    text-align: justify;
-    box-shadow: 6px 6px 5px #aaa;
+  display: flex;
+  flex-wrap: wrap;
 }
 
-.taskFormButton>button{
-    margin-right: 25px;
+.btn-suppr-tag {
+  position: relative;
+  top: -12px;
+  left:6px;
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  opacity: 0;
+  overflow: hidden;
+  border: 1px solid #83bd42;
+  border-radius: 50%;
+  padding: 5px;
+
+  background-color: #83bd42;
 }
 
-.titleTask{
-    background-color: #f8f8f8;
-    font-weight: 500;
-    color: black;
-    padding: 5px;
-    border: 1px solid #e7e7e7;
+.tag-popup-trello:hover .btn-suppr-tag {
+  opacity: 1;
 }
 
-
-.iconView{
-    color: #17A2B8;  
+.btn-suppr-tag:hover::before,
+.btn-suppr-tag:hover::after {
+  background: black;
 }
 
-.iconEdit{
-    color: #FFC107;   
+.btn-suppr-tag:before,
+.btn-suppr-tag:after {
+  content: '';
+  position: absolute;
+  height: 2px;
+  width: 60%;
+  top: 45%;
+  left: 20%;
+  background: #fff;
+  border-radius: 5px;
 }
 
-.iconDelete{
-    color: #DC3545;   
+.btn-suppr-tag:before {
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
 }
 
-.iconCheck{
-    color: #28A745;
-}
-
-.lowPriority{
-    color: #28A745;
-    font-weight: bold;
-}
-
-.mediumPriority{
-    color: #FFC107;
-    font-weight: bold;
-}
-
-.highPriority{
-    color: #DC3545;
-    font-weight: bold;
-}
-
-.iconTask>a>i{
-    margin-right: 10px;
-}
-
-.priorityGreen{
-    background-color: #28A745;
-    color: white;
-    font-weight: 500;
-}
-
-.priorityOrange{
-    background-color: #FFC107;
-    color: white;
-    font-weight: 500;
-}
-
-.priorityRed{
-    background-color: brown;
-    color: white;
-    font-weight: 500;
-}
-
-
-th{
-    font-weight: bold;
-}
-
-td{
-    font-weight: 400;
+.btn-suppr-tag:after {
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg);
 }

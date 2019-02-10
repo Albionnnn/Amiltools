@@ -13,6 +13,7 @@ const morgan = require('morgan')('dev')
 const http = require('http')
 const expressServer = new express()
 const cors = require('cors')
+const socketIo = require("socket.io");
 
 expressServer.use(morgan)
 expressServer.use(bodyParser.json({type: '*/*'}))
@@ -34,3 +35,36 @@ server.listen(config.port, () => {
 })
 
 
+
+//socket
+const io = socketIo(server);
+
+io.on('connection', socket => {
+  console.log('New client connected')
+
+  socket.on("cardAdd", id => {
+    console.log("Add card")
+    io.sockets.emit("cardsChange");
+  })
+  socket.on("cardDelete", id => {
+    console.log("delete card" + id)
+    io.sockets.emit("cardDelete", id);
+  })
+  socket.on("cardMoved", id => {
+    console.log("moved card" + id)
+    io.sockets.emit("cardChange", id);
+  })
+  socket.on("cardModif", id => {
+    console.log("modified card" + id)
+    io.sockets.emit("cardChange", id);
+  })
+  socket.on("laneMoved", id => {
+    console.log("laneMoved")
+    io.sockets.emit("lanesChange");
+  })
+  socket.on("laneModif", id => {
+    console.log("laneModif")
+    io.sockets.emit("lanesChange");
+  })
+  socket.on("disconnect", () => console.log("Client disconnected"));
+});

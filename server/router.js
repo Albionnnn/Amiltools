@@ -97,6 +97,7 @@ const config = require('./config/config.json')
 const UserController = require('./controllers/user_controller')
 const ReportController = require('./controllers/report_controller')
 const TaskController = require('./controllers/task_controller')
+const TaskGroupController = require('./controllers/taskgroup_controller')
 const BugTrackerController = require('./controllers/bugtracker_controller')
 const CalendarController = require('./controllers/calendar_controller')
 const AstuceController = require('./controllers/astuce_controller')
@@ -165,18 +166,21 @@ module.exports = function(server){
     //-----------------------------------------------------------------------------------------
 
     //TASK ROUTE
-        //Display Task
-        server.get(`${config.routeApi}task`, TaskController.findAllTaskController)
-        server.get(`${config.routeApi}task/:id`, TaskController.findOneTaskController)
+    //Display Task
+    server.get(`${config.routeApi}task`, TaskController.findAllTaskController)
+    server.get(`${config.routeApi}task/:id`, TaskController.findOneTaskController)
 
-        //Control Task
-        server.post(`${config.routeApi}task/add`, TaskController.addTaskController)
-        server.put(`${config.routeApi}task/update/:id`, TaskController.updateTaskController)
-        server.delete(`${config.routeApi}task/delete/:id`, TaskController.deleteTaskController)
+    //Control Task
+    server.post(`${config.routeApi}task/add`, TaskController.addTaskController)
+    server.put(`${config.routeApi}task/update/:id`, TaskController.updateTaskController)
+    server.delete(`${config.routeApi}task/delete/:id`, TaskController.deleteTaskController)
 
-        //Options
-        server.get(`${config.routeApi}task/count/all`, TaskController.countTaskController)
+    //Options
+    server.get(`${config.routeApi}task/count/all`, TaskController.countTaskController)
 
+    server.get(`${config.routeApi}taskgroup`, TaskGroupController.findAllTaskGroupController)
+    server.put(`${config.routeApi}taskgroup/updatepos/:id`, TaskGroupController.updatePositionTaskGroupController)
+    server.put(`${config.routeApi}taskgroup/update/:id`, TaskGroupController.updateTaskGroupController)
     //-----------------------------------------------------------------------------------------
 
     //BUGTRACKER ROUTE

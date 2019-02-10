@@ -1,0 +1,63 @@
+#NAME : AmilTools
+#AUTHOR : GABIN RIMBAULT && GAETAN QUICHAUD
+#DATE : 10/02/2019
+#BUILD : SERVER : 1.0.0:006 - DEV
+
+#################################### LAST VERSION ####################################
+
+BUILD : TASK COMPONENT
+
+-----------------------------------------------------------------------------------------------
+
+# Général :
+    -> Ce Build apporte l'ajout de la derniére application de l'erp avant la sortie en 1.0.0
+    Il est basé sur le thème de trello. 
+    L'équipe a aussi ajouté la gestion des taches en temps réel grace à socket.io côté serveur.
+
+-----------------------------------------------------------------------------------------------
+
+#Server
+    
+    #Socket.io
+        ->Ajout de Socket.io = const socketIo = require("socket.io");
+    
+    #Routes
+        taskgroup :: Fonction qui permet de rechercher toutes les taskgroup
+        taskgroup/updatepos/:id :: Fonction qui update la position
+        taskgroup/update/:id :: Fonction qui update les taskgroup
+
+    #Model :
+        taskgroup_model :
+            findAllTaskGroupModel() :: Fonction qui recherche all taskgroup
+            findOneTaskGroupModel() :: Fonction qui recherche une taskgroup
+            addTaskGroupModel() :: Fonction pour ajouter
+            updateTaskGroupModel() :: Fonction pour update
+            deleteTaskGroupModel() :: Fonction pour delete
+            countTaskGroupModel() :: Fonction pour compter
+
+    #Main_Model :
+        UPDATE -> findAllMainModel() :: Ajout du paramètre order
+
+    #Controller :
+        #task_controller :
+            -> findAllTaskController() :: Controller qui recherche toutes les tasks
+            -> findOneTaskController() :: Controller qui recherche une task
+            -> addTaskController() :: Controller qui ajoute une task
+            -> updateTaskController() :: Controller qui édite une task 
+            -> deleteTaskController() :: Controller qui supprime une task
+            -> countTaskController() :: Controller qui compte les tasks
+
+        #taskgroup_controller :
+            -> findAllTaskGroupController() :: Controller qui recherche toutes les taskgroups
+            -> findOneTaskGroupController() :: Controller qui recherche une taskgroup
+            -> addTaskGroupController() :: Controller qui ajoute une taskgroup
+            -> updateTaskGroupController() :: Controller qui édite une task group
+            -> updatePositionTaskGroupController() :: Controller qui met à jour la position des tasksgroups
+            -> deleteTaskGroupController() :: Controller qui supprime une taskgroup
+            -> countTaskGroupController() :: Controller qui compte les tasksgroup
+
+    #BDD :
+        -> Mise a jour de la BDD en BDD-V-1.0.0-005.sql
+-----------------------------------------------------------------------------------------------
+
+#################################### LAST VERSION ####################################
