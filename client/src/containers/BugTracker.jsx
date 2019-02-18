@@ -1,5 +1,3 @@
-//FIXME: Probleme sur la fonction requestPriorityBug les boutons CSS ne se desactive pas quand il faut.
-
 import React, {Component, Fragment} from 'react'
 import axios from 'axios'
 import config from '../config/config.json'
@@ -19,6 +17,7 @@ class BugTracker extends Component{
         "displayResponse": {},
         "clicOnBug": {},
         "activeFilter": '',
+        "stateFilter": 0,
         "openPopup": false,
         "popup": "",
         "priority": ['Low', 'Medium', 'High'],
@@ -151,7 +150,7 @@ class BugTracker extends Component{
 
 // ------------------------------------------------------------------------------- REQUEST SEARCH
 
-    //Fonction qui modifie le css en place du les boutons de filtrage pour les priorités
+    //Fonction qui modifie le css en place sur les boutons de filtrage pour les priorités
     requestPriorityBug(priority){
 
         let cssPriority = priority.replace('Low', 'success').replace('Medium', 'warning').replace('High', 'danger')
@@ -160,8 +159,15 @@ class BugTracker extends Component{
         for(let i = 0; i < this.state.priority.length; i++){
             let cssPriority2 = this.state.priority[i].replace('Low', 'success').replace('Medium', 'warning').replace('High', 'danger')
             if(priority === this.state.priority[i]){
-                document.getElementById(`priority${priority}`).classList.replace(`btn-outline-${cssPriority}`, `btn-${cssPriority}`)
-                this.requestBugFilterPriority(priority)
+                if(this.state.stateFilter){
+                    this.setState({stateFilter: 0})
+                    document.getElementById(`priority${priority}`).classList.replace(`btn-${cssPriority}`, `btn-outline-${cssPriority}`)
+                    this.requestBugFilterPriority(priority)
+                }else{
+                    this.setState({stateFilter: 1})
+                    document.getElementById(`priority${priority}`).classList.replace(`btn-outline-${cssPriority}`, `btn-${cssPriority}`)
+                    this.requestBugFilterPriority(priority)
+                }
             }else{
                 document.getElementById(`priority${this.state.priority[i]}`).classList.replace(`btn-${cssPriority2}`, `btn-outline-${cssPriority2}`)
             }
@@ -274,7 +280,7 @@ class BugTracker extends Component{
                         <div className="footerBug">
                             <div className="row">
                                 <div className="col-lg-12">
-                                    <span className="compteurBug">Il y a actuelement {this.state.nbAllBug} Bugs</span>
+                                    <span className="compteurBug">Il y a actuellement {this.state.nbAllBug} Bugs</span>
                                 </div>
                             </div>
                         </div>

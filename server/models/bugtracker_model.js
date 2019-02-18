@@ -13,13 +13,15 @@ module.exports = {
             bt.id as id_bug, bt.title as title_bug, bt.content as content_bug, bt.priority as priority_bug, bt.tags as tags_bug, bt.archive as archive_bug,
             create_at, firstname, lastname, id_user
             FROM ${table} as bt
-            INNER JOIN amil_user ON bt.id_user = amil_user.id`)
+            INNER JOIN amil_user ON bt.id_user = amil_user.id
+            ORDER BY priority`)
             console.log('------------')
             DB.query(`SELECT
             bt.id as id_bug, bt.title as title_bug, bt.content as content_bug, bt.priority as priority_bug, bt.tags as tags_bug, bt.archive as archive_bug,
             create_at, firstname, lastname, id_user
             FROM ${table} as bt
-            INNER JOIN amil_user ON bt.id_user = amil_user.id`,
+            INNER JOIN amil_user ON bt.id_user = amil_user.id
+            ORDER BY priority`,
             (err, result) => {
                 if(err) reject(err)
                 else {
@@ -104,14 +106,16 @@ module.exports = {
             create_at, firstname, lastname, id_user
             FROM ${table} as bt
             INNER JOIN amil_user ON bt.id_user = amil_user.id
-            WHERE id_user = ${id_user}`)
+            WHERE id_user = ${id_user} 
+            ORDER BY priority`)
             console.log('------------')
             DB.query(`SELECT
             bt.id as id_bug, bt.title as title_bug, bt.content as content_bug, bt.priority as priority_bug, bt.tags as tags_bug, bt.archive as archive_bug,
             create_at, firstname, lastname, id_user
             FROM ${table} as bt
             INNER JOIN amil_user ON bt.id_user = amil_user.id
-            WHERE id_user = ${id_user}`,
+            WHERE id_user = ${id_user}
+            ORDER BY priority`,
             (err, result) => {
                 if(err) reject(err)
                 else {

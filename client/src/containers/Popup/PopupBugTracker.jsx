@@ -26,7 +26,8 @@ class PopupBugTracker extends Component{
         'author': this.props.author,
         'idUser': this.props.idUser,
         'idBug': this.props.idBug,
-        'sendIdUser': ''
+        'sendIdUser': '',
+        'stateDeleteBug': false
     }
 
     componentDidMount(){
@@ -132,10 +133,11 @@ class PopupBugTracker extends Component{
         })
     }
 
-    //Fonction qui supprimer un bug
-    sendDeleteBug = () => {
+    //Fonction qui supprime un bug
+    deleteBug = () => {
+        this.setState({stateDeleteBug: false})
         axios.delete(config.URL_SERV_BEGGIN + config.URL_API_REST +
-                    'bugtracker/delete/' + this.state.idBug)
+            'bugtracker/delete/' + this.state.idBug)
         .then((response) => {
             this.props.onSuccess(response.data.response)
             this.props.onClose()
@@ -144,6 +146,19 @@ class PopupBugTracker extends Component{
             this.props.onError(error)
             this.props.onClose()
         })
+    }
+
+    //Fonction qui demande la confirmation de suppresion de bug
+    sendDeleteBug = () => {
+        console.log('state = ', this.state.stateDeleteBug)
+        if(this.state.stateDeleteBug){
+            this.setState({stateDeleteBug: false})
+            document.getElementById('divConfirmSupressBug').style.display = 'none'
+        }else{
+            this.setState({stateDeleteBug: true})
+            document.getElementById('divConfirmSupressBug').style.display = 'block'
+        }
+           
     }
 
 
@@ -254,9 +269,11 @@ class PopupBugTracker extends Component{
                 <Fragment>
                     {!this.state.stateEdit && <button onClick={this.handleChangeStateEdit} className="btn btn-outline-warning my-2 my-sm-0" type="submit">Edit</button>}
                     {!this.state.stateEdit && <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Archive</button>}
-                    {!this.state.stateEdit && <button onClick={this.sendDeleteBug} className="btn btn-outline-danger my-2 my-sm-0" type="submit">Delete</button>}
-
+                    {!this.state.stateEdit && <button id="buttonDelete" onClick={this.sendDeleteBug} className="btn btn-outline-danger my-2 my-sm-0" type="submit">Delete</button>}
                     {this.state.stateEdit && <button onClick={this.sendEditBug} className="btn btn-outline-success my-2 my-sm-0" type="submit">Save</button>}
+                    <div id="divConfirmSupressBug" className="alert alert-danger" role="alert">
+                        Really? ( <span className="linkDeleteBug" onClick={this.deleteBug}>Yes</span> / <span className="linkDeleteBug" onClick={this.sendDeleteBug}>No</span> )
+                    </div>
                 </Fragment>
             )
         }

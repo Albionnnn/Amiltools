@@ -89,3 +89,17 @@
     color: white;
     cursor: pointer;
 }
+
+#divConfirmSupressBug{
+    display: none;
+    margin-top: 20px;
+}
+
+.linkDeleteBug{
+    text-decoration: #721C24;
+    cursor: pointer;
+}
+
+.linkDeleteBug:hover{
+    font-weight: bold;
+}

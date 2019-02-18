@@ -157,22 +157,22 @@ module.exports = {
     })
   },
 
-  //Fonction qui permet de compter un nombre d'information
-  countMainModel(table) {
-    return new Promise((resolve, reject) => {
+  //Fonction qui permet de compter un nombre d'information depuis un ID
+countMainModelWithID(table, search='id', content='1'){
+  return new Promise((resolve, reject) => {
       this.verifTable(table)
-        .then((response) => {
+      .then((response) => {
           console.log('------------');
-          console.log('Request countMainModel : ' + `SELECT COUNT(*) AS count FROM ${table}`);
+          console.log('Request countMainModel : ' + `SELECT COUNT(*) AS count FROM ${table} WHERE ${search}= '${content}'`);
           console.log('------------');
-          DB.query(`SELECT COUNT(*) AS count FROM ${table}`, (err, result) => {
-            if (err) reject(err)
-            else resolve(result[0].count)
+          DB.query(`SELECT COUNT(*) AS count FROM ${table} WHERE ${search}= '${content}'`, (err, result) => {
+              if(err) reject(err)
+              else resolve(result[0].count)
           })
-        })
-        .catch((error) => reject(error))
-    })
-  },
+      })
+      .catch((error) => reject(error))
+  })
+},
 
   //Fonction qui permet de récupérer le dernier ID d'une table
   lastIDMainModel(table) {
