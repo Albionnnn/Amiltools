@@ -12,9 +12,9 @@
 
 ## 1. Général
 
-Bonjour, vous êtes sur la branch de dev et aucun fork ne sera accepter.
-Si vous souhaitez ajouter une features merci de fork la branch Features.
-Si vous souhaitez corriger un bug merci de fork la branch HotFix.
+Bonjour, vous êtes sur la branch de dev et aucun fork ne sera accepter.<br>
+Si vous souhaitez ajouter une features merci de fork la branch Features.<br>
+Si vous souhaitez corriger un bug merci de fork la branch HotFix.<br>
 
 ------------------------------
 
