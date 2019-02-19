@@ -6,10 +6,6 @@
 ## SOMMAIRE :
 
 * [Général](https://github.com/Eito33/Project-Phantom#1-général)
-* [Fonctions](https://github.com/Eito33/Project-Phantom#2-fonctions)
-* [Logiciels](https://github.com/Eito33/Project-Phantom#3-logiciels)
-* [Changelog](https://github.com/Eito33/Project-Phantom#3-changelog)
-
 
 ------------------------------
 
