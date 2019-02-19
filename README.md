@@ -1,4 +1,6 @@
-# AmilTool's - `V. 1.0.0 Dev`
+# AmilTool's - `V. 1.0.0 Release`
+# Build: 007
+# Branch : Release
 ![ImageLOAD](http://image.noelshack.com/fichiers/2018/50/4/1544740136-amiltools.png)
 
 ## SOMMAIRE :
