@@ -13,8 +13,8 @@
 ## 1. Général
 
 Bonjour, vous êtes sur la branch de dev et aucun fork ne sera accepter.<br>
-Si vous souhaitez ajouter une features merci de fork la branch Features.<br>
-Si vous souhaitez corriger un bug merci de fork la branch HotFix.<br>
+Si vous souhaitez ajouter une features merci de fork la branch [Features](https://github.com/AmiltoneNiort/Amiltools/tree/Features).<br>
+Si vous souhaitez corriger un bug merci de fork la branch [HotFix](https://github.com/AmiltoneNiort/Amiltools/tree/HotFix).<br>
 
 ------------------------------
 
