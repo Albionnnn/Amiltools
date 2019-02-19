@@ -15,6 +15,7 @@ import Connexion from '../containers/Connexion'
 import UserProfile from '../containers/UserProfile'
 import SearchBar from '../containers/SearchBar'
 import Footer from '../containers/Footer'
+import addUserAdmin from '../containers/Admin/addUserAdmin'
 
 
 //Guards
@@ -42,6 +43,7 @@ class App extends Component {
                 <Route exact path='/user' component={RequireisAuth(User)} />
                 <Route exact path='/profile/:author' component={RequireisAuth(UserProfile)} />
                 <Route exact path='/search=:name/typesearch=:typesearch' component={RequireisAuth(SearchBar)} />
+                <Route exact path='/addUserAdmin' component={RequireisAuth(addUserAdmin)} />
                 <Route component={NotFound} />
               </Switch>
             </section>

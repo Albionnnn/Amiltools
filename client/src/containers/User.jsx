@@ -2,6 +2,7 @@ import React, {Component, Fragment} from 'react'
 import PopupUser from './Popup/PopupUser'
 import {Redirect} from 'react-router-dom'
 import marked from 'marked'
+import {Link} from 'react-router-dom'
 
 //Services
 import VerifUserRole from '../services/verif_role_user'
@@ -55,13 +56,22 @@ class User extends Component{
         }
     }
 
+    displayButtonAddUser(){
+        if(this.state.VerifUserRole.get100Value()){
+            return(
+             <Link to="/addUserAdmin"><button className="btn btn-outline-danger my-2 my-sm-0">AddUserAdmin</button></Link>
+            )
+         }
+    }
+
     render(){
         return(
             <Fragment>
                 <h2>User Profile</h2>
                 <p>
                     <button onClick={() => this.openEdit(true)} className="userButton btn btn-outline-info my-2 my-sm-0" type="submit">Edit</button>
-                    <button onClick={this.handleDeconnexion} className="btn btn-outline-danger my-2 my-sm-0" type="submit">Log out</button>
+                    <button onClick={this.handleDeconnexion} className="userButton btn btn-outline-danger my-2 my-sm-0" type="submit">Log out</button>
+                    {this.displayButtonAddUser()}
                 </p>
                     <span className="userBadge badge badge-info">{this.getJob()}</span>
                     <span className="userBadge badge badge-primary">{this.props.saveUserReducer.team}</span>
